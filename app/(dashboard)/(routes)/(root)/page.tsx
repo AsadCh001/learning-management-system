@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { UserButton } from "@clerk/nextjs";
  
-export default function Home() {
+export default function Page() {
   return (
     <div className="h-screen">
       <UserButton />
-      <Button>Click me</Button>
     </div>
   )
 }
+
