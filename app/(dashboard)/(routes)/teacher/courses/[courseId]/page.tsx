@@ -3,17 +3,17 @@ import { redirect } from "next/navigation";
 import { CircleDollarSign, File, LayoutDashboard, ListChecks } from "lucide-react";
 
 import { db } from "@/lib/db";
-// import { IconBadge } from "lucide-react";
-// import { Banner } from "@/components/banner";
+import { IconBadge } from "@/components/icon-badge";
+import { Banner } from "@/components/banner";
 
-// import { TitleForm } from "./_components/title-form";
-// import { DescriptionForm } from "./_components/description-form";
-// import { ImageForm } from "./_components/image-form";
-// import { CategoryForm } from "./_components/category-form";
-// import { PriceForm } from "./_components/price-form";
-// import { AttachmentForm } from "./_components/attachment-form";
-// import { ChaptersForm } from "./_components/chapters-form";
-// import { Actions } from "./_components/actions";
+import { TitleForm } from "./_components/title-form";
+import { DescriptionForm } from "./_components/description-form";
+import { ImageForm } from "./_components/image-form";
+import { CategoryForm } from "./_components/category-form";
+import { PriceForm } from "./_components/price-form";
+import { AttachmentForm } from "./_components/attachment-form";
+import { ChaptersForm } from "./_components/chapters-form";
+import { Actions } from "./_components/actions";
 
 const CourseIdPage = async ({
   params
@@ -25,7 +25,7 @@ const CourseIdPage = async ({
   if (!userId) {
     return redirect("/");
   }
-  console.log(params.courseId)
+
   const course = await db.course.findUnique({
     where: {
       id: params.courseId,
@@ -51,6 +51,7 @@ const CourseIdPage = async ({
     },
   });
 
+
   if (!course) {
     return redirect("/");
   }
@@ -73,7 +74,7 @@ const CourseIdPage = async ({
 
   return (
     <>
-      {/* {!course.isPublished && (
+      {!course.isPublished && (
         <Banner
           label="This course is unpublished. It will not be visible to the students."
         />
@@ -162,8 +163,7 @@ const CourseIdPage = async ({
             </div>
           </div>
         </div>
-      </div> */}
-      <p>course id page</p>
+      </div>
     </>
    );
 }
