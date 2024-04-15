@@ -52,6 +52,7 @@ const CourseIdPage = async ({
   });
 
 
+
   if (!course) {
     return redirect("/");
   }
