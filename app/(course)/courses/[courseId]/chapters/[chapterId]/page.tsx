@@ -40,9 +40,8 @@ const ChapterIdPage = async ({
     return redirect("/")
   }
 
-
   const isLocked = !chapter.isFree && !purchase;
-  const completeOnEnd = !!purchase && !userProgress?.isCompleted;
+  const check = chapter.isFree! || purchase!;
 
   return ( 
     <div>
@@ -55,10 +54,11 @@ const ChapterIdPage = async ({
       {isLocked && (
         <Banner
           variant="warning"
-          label="You need to purchase this course to watch this chapter."
+          label="You need to purchase this course to see this chapter."
         />
       )}
       <div className="flex flex-col max-w-4xl mx-auto pb-20">
+
         {/* <div className="p-4">
           <VideoPlayer
             chapterId={params.chapterId}
@@ -76,12 +76,15 @@ const ChapterIdPage = async ({
               {chapter.title}
             </h2>
             {purchase ? (
-              <CourseProgressButton
-                chapterId={params.chapterId}
-                courseId={params.courseId}
-                nextChapterId={nextChapter?.id}
-                isCompleted={!!userProgress?.isCompleted}
-              />
+              <>
+                <CourseProgressButton
+                  chapterId={params.chapterId}
+                  courseId={params.courseId}
+                  nextChapterId={nextChapter?.id}
+                  isCompleted={!!userProgress?.isCompleted}
+                />
+                
+              </>
             ) : (
               <CourseEnrollButton
                 courseId={params.courseId}
@@ -90,28 +93,10 @@ const ChapterIdPage = async ({
             )}
           </div>
           <Separator />
-          <div>
-            <Preview value={chapter.description!} />
-          </div>
-          {!!attachments.length && (
-            <>
-              <Separator />
-              <div className="p-4">
-                {attachments.map((attachment) => (
-                  <a 
-                    href={attachment.url}
-                    target="_blank"
-                    key={attachment.id}
-                    className="flex items-center p-3 w-full bg-sky-200 border text-sky-700 rounded-md hover:underline"
-                  >
-                    <File />
-                    <p className="line-clamp-1">
-                      {attachment.name}
-                    </p>
-                  </a>
-                ))}
-              </div>
-            </>
+          {check && (
+            <div>
+              <Preview value={chapter.description!} />
+            </div>
           )}
         </div>
       </div>

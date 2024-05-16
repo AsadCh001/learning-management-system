@@ -1,5 +1,7 @@
+import { Suspense } from "react";
 import { Navbar } from "./_components/navbar";
 import { Sidebar } from "./_components/sidebar";
+import Loading from "./loading";
 
 const DashboardLayout = ({
   children
@@ -14,9 +16,11 @@ const DashboardLayout = ({
       <div className="hidden md:flex h-full w-56 flex-col fixed inset-y-0 z-50">
         <Sidebar />
       </div>
+      <Suspense fallback={<Loading/>}>
       <main className="md:pl-56 pt-[80px] h-full">
         {children}
       </main>
+      </Suspense>
     </div>
    );
 }
