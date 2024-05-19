@@ -4,7 +4,7 @@ import { File } from "lucide-react";
 
 import { getChapter } from "@/actions/get-chapter";
 import { Banner } from "@/components/banner";
-import { Separator } from "@/components/ui/separator";
+// import { Separator } from "@/components/ui/separator";
 import { Preview } from "@/components/preview";
 
 // import { VideoPlayer } from "./_components/video-player";
@@ -28,7 +28,7 @@ const ChapterIdPage = async ({
     nextChapter,
     userProgress,
     purchase,
-  } = await getChapter({
+  } =  await getChapter({
     userId,
     chapterId: params.chapterId,
     courseId: params.courseId,
@@ -90,7 +90,7 @@ const ChapterIdPage = async ({
               />
             )}
           </div>
-          <Separator />
+          {/* <Separator /> */}
           {check && (
             <div>
               <Preview value={chapter.description!} />
