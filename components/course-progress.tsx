@@ -27,11 +27,10 @@ export const CourseProgress = ({
       <Progress
         className="h-2"
         value={value}
-        variant={variant}
       />
       <p className={cn(
-        "font-medium mt-2 text-sky-700",
-        colorByVariant[variant || "default"],
+        "font-medium mt-2",
+        variant === "success" ? "text-emerald-700" : "text-sky-700",
         sizeByVariant[size || "default"],
       )}>
         {Math.round(value)}% Complete
