@@ -1,5 +1,6 @@
-import { Category, Chapter, Course } from "@prisma/client";
+'use server';
 
+import { Category, Chapter, Course } from "@prisma/client";
 import { db } from "@/lib/db";
 import { getProgress } from "@/actions/get-progress";
 
